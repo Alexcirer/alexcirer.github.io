@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin: 15px 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #0078D7;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005BB5;
+        }
+        .output {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .output p {
+            font-size: 14px;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create Your Link</h1>
+        <p>Select an action and generate a link.</p>
+
+        <div class="form-group">
+            <label for="action">Action</label>
+            <select id="action">
+                <option value="follow">Follow on Social Media</option>
+                <option value="subscribe">Subscribe to Channel</option>
+                <option value="custom">Custom Action</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="detail">Enter Action Detail</label>
+            <input type="text" id="detail" placeholder="e.g., https://youtube.com/mychannel">
+        </div>
+
+        <div class="form-group">
+            <label for="custom-path">Custom Path (optional)</label>
+            <input type="text" id="custom-path" placeholder="e.g., mycustompath">
+        </div>
+
+        <button onclick="generateLink()">Generate Link</button>
+
+        <div class="output" id="output" style="display: none;">
+            <h2>Your Link:</h2>
+            <p id="generated-link"></p>
+            <button onclick="copyLink()">Copy Link</button>
+        </div>
+    </div>
+
+    <script>
+        function generateLink() {
+            const action = document.getElementById('action').value;
+            const detail = encodeURIComponent(document.getElementById('detail').value.trim());
+            const customPath = document.getElementById('custom-path').value.trim();
+            if (!detail) {
+                alert('Please provide the action detail.');
+                return;
+            }
+
+            let basePath = 'https://alexcirer.github.io/links/';
+            let generatedPath = customPath
+                ? `https://alexcirer.github.io/${customPath}`
+                : `${basePath}${action}.html?detail=${detail}`;
+
+            const output = document.getElementById('output');
+            document.getElementById('generated-link').textContent = generatedPath;
+            output.style.display = 'block';
+        }
+
+        function copyLink() {
+            const link = document.getElementById('generated-link').textContent;
+            navigator.clipboard.writeText(link).then(() => {
+                alert('Link copied to clipboard!');
+            });
+        }
+    </script>
+</body>
+</html>

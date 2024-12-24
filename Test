@@ -18,28 +18,28 @@
         .container {
             background-color: #1e1e1e;
             border-radius: 10px;
-            padding: 20px;
+            padding: 30px;
             text-align: center;
             width: 90%;
-            max-width: 400px;
+            max-width: 500px;
         }
         .container h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
+            font-size: 28px;
+            margin-bottom: 20px;
         }
         .container p {
-            font-size: 14px;
+            font-size: 16px;
             color: #b0b0b0;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
         .button {
             background-color: #00b894;
             color: #ffffff;
             border: none;
             border-radius: 5px;
-            padding: 10px 20px;
-            font-size: 16px;
-            margin-bottom: 10px;
+            padding: 15px 25px;
+            font-size: 18px;
+            margin-bottom: 15px;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -66,7 +66,7 @@
         }
         .progress-bar {
             background-color: #00b894;
-            height: 5px;
+            height: 8px;
             width: 0;
             transition: width 0.3s;
         }
@@ -75,8 +75,8 @@
             color: #b0b0b0;
             border: none;
             border-radius: 5px;
-            padding: 10px 20px;
-            font-size: 16px;
+            padding: 15px 25px;
+            font-size: 18px;
             cursor: not-allowed;
             width: 100%;
         }

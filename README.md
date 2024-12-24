@@ -45,9 +45,18 @@
             align-items: center;
             justify-content: center;
             width: 100%;
+            transition: background-color 0.3s;
         }
         .button i {
             margin-right: 10px;
+        }
+        .button.loading {
+            animation: blink 0.5s step-end infinite alternate;
+        }
+        @keyframes blink {
+            50% {
+                background-color: #00a383;
+            }
         }
         .progress {
             background-color: #333333;
@@ -59,6 +68,7 @@
             background-color: #00b894;
             height: 5px;
             width: 0;
+            transition: width 0.3s;
         }
         .unlock-button {
             background-color: #555555;
@@ -70,19 +80,64 @@
             cursor: not-allowed;
             width: 100%;
         }
+        .unlock-button.enabled {
+            background-color: #00b894;
+            color: #ffffff;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Get Key 2/2</h1>
         <p>Complete the actions to unlock</p>
-        <button class="button"><i class="fas fa-link"></i> Visit a page</button>
-        <button class="button"><i class="fas fa-link"></i> Visit a page</button>
+        <button class="button" onclick="visitPage(this)"><i class="fas fa-link"></i> Visit a page</button>
+        <button class="button" onclick="visitPage(this)"><i class="fas fa-link"></i> Visit a page</button>
+        <button class="button" onclick="visitPage(this)"><i class="fas fa-link"></i> Visit a page</button>
+        <button class="button" onclick="visitPage(this)"><i class="fas fa-link"></i> Visit a page</button>
         <div class="progress">
-            <div class="progress-bar" style="width: 0%;"></div>
+            <div class="progress-bar" id="progress-bar"></div>
         </div>
-        <p>unlock progress 0/2</p>
-        <button class="unlock-button">Unlock link</button>
+        <p id="progress-text">unlock progress 0/4</p>
+        <button class="unlock-button" id="unlock-button" onclick="unlockLink()">Unlock link</button>
     </div>
+
+    <script>
+        let progress = 0;
+        const totalTasks = 4;
+
+        function visitPage(button) {
+            if (button.classList.contains('loading')) return;
+
+            button.classList.add('loading');
+            setTimeout(() => {
+                button.classList.remove('loading');
+                progress++;
+                updateProgress();
+            }, 6500);
+        }
+
+        function updateProgress() {
+            const progressBar = document.getElementById('progress-bar');
+            const progressText = document.getElementById('progress-text');
+            const unlockButton = document.getElementById('unlock-button');
+
+            const progressPercentage = (progress / totalTasks) * 100;
+            progressBar.style.width = progressPercentage + '%';
+            progressText.textContent = `unlock progress ${progress}/${totalTasks}`;
+
+            if (progress === totalTasks) {
+                unlockButton.classList.add('enabled');
+                unlockButton.disabled = false;
+                unlockButton.style.cursor = 'pointer';
+            }
+        }
+
+        function unlockLink() {
+            if (progress === totalTasks) {
+                window.location.href = 'https://example.com/unlock-link';
+            }
+        }
+    </script>
 </body>
 </html>

@@ -3,16 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subscribe</title>
+    <title>Follow Action</title>
 </head>
 <body>
-    <h1>Subscribe Action</h1>
-    <p>Thank you for subscribing! Follow the link below:</p>
+    <h1>Follow Action</h1>
+    <p>Follow the link below:</p>
     <p id="action-detail"></p>
     <script>
+        // Get the detail parameter from the URL
         const urlParams = new URLSearchParams(window.location.search);
         const detail = urlParams.get('detail');
-        document.getElementById('action-detail').innerHTML = `<a href="${decodeURIComponent(detail)}" target="_blank">${decodeURIComponent(detail)}</a>`;
+
+        // Display the detail as a link
+        document.getElementById('action-detail').innerHTML = `
+            <a href="${decodeURIComponent(detail)}" target="_blank">${decodeURIComponent(detail)}</a>
+        `;
     </script>
 </body>
 </html>

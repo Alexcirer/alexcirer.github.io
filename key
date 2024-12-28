@@ -1,0 +1,126 @@
+<html>
+<head>
+    <title>Get Key 2/2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #161b22;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+            border: 1px solid #30363d;
+        }
+        .container h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .container p {
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+        .button {
+            background-color: #ffffff;
+            color: #000000;
+            border: none;
+            padding: 15px 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1em;
+            text-decoration: none;
+            display: block;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #e0e0e0;
+        }
+        .button.completed {
+            background-color: #28a745;
+            color: #ffffff;
+        }
+        .button.blinking {
+            animation: blink 1s step-start infinite;
+        }
+        @keyframes blink {
+            0%, 100% {
+                background-color: #ffffff;
+            }
+            50% {
+                background-color: #f0f0f0;
+            }
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.8em;
+            border-top: 1px solid #30363d;
+            padding-top: 10px;
+        }
+        .footer a {
+            color: #58a6ff;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        let completedTasks = 0;
+
+        function visitPage(button, url) {
+            button.classList.add('blinking');
+            window.open(url, '_blank');
+            setTimeout(function() {
+                button.classList.remove('blinking');
+                button.classList.add('completed');
+                button.textContent = 'Completed';
+                completedTasks++;
+                checkCompletion();
+            }, 7000);
+        }
+
+        function checkCompletion() {
+            if (completedTasks === 4) {
+                const continueButton = document.getElementById('continueButton');
+                continueButton.disabled = false;
+                continueButton.style.backgroundColor = '#ffffff';
+                continueButton.style.color = '#000000';
+                continueButton.onclick = function() {
+                    window.location.href = 'https://shifescr.blogspot.com/2024/11/key.html';
+                };
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Get Key 2/2</h1>
+        <p>Complete the tasks and as requested and click continue.</p>
+        <button class="button" onclick="visitPage(this, 'https://perkyexcitedlyscenario.com/w7dcksnw0?key=6fc8b98bb41780d094cdad3f5a7753fd')">Visit Page</button>
+        <button class="button" onclick="visitPage(this, 'https://perkyexcitedlyscenario.com/ha88f3tiuq?key=a5689ed3b2af24f8ea0783601d25731a')">Visit Page</button>
+        <button class="button" onclick="visitPage(this, 'https://perkyexcitedlyscenario.com/ckqeezzw0?key=2d5bbdb13337f927cb45e4ba4ebebd72')">Visit Page</button>
+        <button class="button" onclick="visitPage(this, 'https://perkyexcitedlyscenario.com/wb6hwqn2?key=1fbf78b3395fe8414fa68b0618578413')">Visit Page</button>
+        <button id="continueButton" class="button" style="background-color: #d3d3d3; color: #000000; max-width: 400px;" disabled>Complete the tasks to continue.</button>
+        <div class="footer">
+            <a href="https://t.me/ShifeScripter" target="_blank">Telegram</a>
+            <a href="https://discord.com/invite/7XcevduV" target="_blank">Discord</a>
+        </div>
+    </div>
+</body>
+</html>
